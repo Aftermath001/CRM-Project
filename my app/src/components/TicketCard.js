@@ -6,19 +6,19 @@ import ProgressDisplay from './ProgressDisplay'
 import PriorityDisplay from './PriorityDisplay'
 import AvatarDisplay from './AvatarDisplay'
 
-const TicketCard = () => {
+const TicketCard = ({color, ticket}) => {
   return (
     <div className="ticket-card">
-       <div className="ticket-color">
-        <Link>
-          <h3>Title</h3>
-          <AvatarDisplay/>
+      <Link to={`/ticket/${ticket.documentId}`} id="link">
+       <div className="ticket-color"></div>
+          <h3>{ticket.title}</h3>
+          <AvatarDisplay ticket={ticket}/>
           <StatusDisplay/>
           <PriorityDisplay/>
           <ProgressDisplay/>
         </Link>
-        <DeleteBlock/>
-       </div>
+      <DeleteBlock/>
+       
     </div>
   )
 }
