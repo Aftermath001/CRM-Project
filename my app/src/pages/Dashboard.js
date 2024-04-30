@@ -23,7 +23,7 @@ const Dashboard = () => {
       owner:'Victoria Minayo',
       avatar:'https://t3.ftcdn.net/jpg/06/17/13/26/360_F_617132669_YptvM7fIuczaUbYYpMe3VTLimwZwzlWf.jpg',
       status:'done',
-      priority: 7,
+      priority: 3,
       progress: 90,
       description:'This is a minutes report on the ICPALD meeeting',
       timestamp:'2024-05-15T10:00:17+0000'
