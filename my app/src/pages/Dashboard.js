@@ -44,23 +44,31 @@ const Dashboard = () => {
     }
     
   ]
+  // Array of colors to display on a specific category
+  const colors = [
+    'rgb(255,179,186)',
+    'rgb(255,223,186)',
+    'rgb(255,255,186)',
+    'rgb(186,255,201)',
+    'rgb(186,225,255)',
+  ]
   // function to find unique categories in my data
-  const uniqueCatergories = [
+  const uniqueCategories = [
     ...new Set(tickets?.map(({category}) => category))
   ]
-  // console.log(uniqueCatergories)
+  // console.log(uniqueCategories)
   return (
     <div className="dashboard">
         <h1>My Projects</h1>
         <div className="ticket-container">
-          {tickets && uniqueCatergories?.map((uniqueCatergory, categoryIndex) =>(
+          {tickets && uniqueCategories?.map((uniqueCategory, categoryIndex) =>(
             <div key={categoryIndex}>
-              <h3>{uniqueCatergory}</h3>
-              {tickets.filter(ticket => ticket.category === uniqueCatergory)
+              <h3>{uniqueCategory}</h3>
+              {tickets.filter(ticket => ticket.category === uniqueCategory)
                 .map((filteredTicket, _index)=>(
                   <TicketCard 
                   id={_index} 
-                  color={filteredTicket.color}
+                  color={colors[categoryIndex] || colors[0] }
                   ticket={filteredTicket}
                   />
                 ))
