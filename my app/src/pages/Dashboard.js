@@ -9,7 +9,7 @@ const Dashboard = () => {
       title:'Report File',
       owner:'Adams Alvin',
       avatar:'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg',
-      status:'done',
+      status:'working on it',
       priority: 5,
       progress: 40,
       description:'This is a Report On the IGAD',
@@ -23,7 +23,7 @@ const Dashboard = () => {
       owner:'Victoria Minayo',
       avatar:'https://t3.ftcdn.net/jpg/06/17/13/26/360_F_617132669_YptvM7fIuczaUbYYpMe3VTLimwZwzlWf.jpg',
       status:'done',
-      priority: 7,
+      priority: 3,
       progress: 90,
       description:'This is a minutes report on the ICPALD meeeting',
       timestamp:'2024-05-15T10:00:17+0000'
@@ -35,7 +35,7 @@ const Dashboard = () => {
       title:'Holiday Update',
       owner:'Steve Ingabo',
       avatar:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7OIUfFNdWLCY1sIjj_x8DuH7YO6uiJtj_0PZ6taQ6Aw&s',
-      status:'done',
+      status:'stuck',
       priority: 2,
       progress: 70,
       description:'This is an update on the upcoming holiday',
@@ -44,23 +44,31 @@ const Dashboard = () => {
     }
     
   ]
+  // Array of colors to display on a specific category
+  const colors = [
+    'rgb(255,179,186)',
+    'rgb(255,223,186)',
+    'rgb(255,255,186)',
+    'rgb(186,255,201)',
+    'rgb(186,225,255)',
+  ]
   // function to find unique categories in my data
-  const uniqueCatergories = [
+  const uniqueCategories = [
     ...new Set(tickets?.map(({category}) => category))
   ]
-  // console.log(uniqueCatergories)
+  // console.log(uniqueCategories)
   return (
     <div className="dashboard">
         <h1>My Projects</h1>
         <div className="ticket-container">
-          {tickets && uniqueCatergories?.map((uniqueCatergory, categoryIndex) =>(
+          {tickets && uniqueCategories?.map((uniqueCategory, categoryIndex) =>(
             <div key={categoryIndex}>
-              <h3>{uniqueCatergory}</h3>
-              {tickets.filter(ticket => ticket.category === uniqueCatergory)
+              <h3>{uniqueCategory}</h3>
+              {tickets.filter(ticket => ticket.category === uniqueCategory)
                 .map((filteredTicket, _index)=>(
                   <TicketCard 
                   id={_index} 
-                  color={filteredTicket.color}
+                  color={colors[categoryIndex] || colors[0] }
                   ticket={filteredTicket}
                   />
                 ))
